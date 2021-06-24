@@ -16,5 +16,6 @@
 # vendor/
 
 .idea/
-runtime/logs/*
+./runtime/logs/*.log
+/logs/*.log
 !.gitkeep
