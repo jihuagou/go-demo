@@ -1,11 +1,11 @@
 package main
 
-import (
-	"github.com/tmaio/go-gin-example/cron/userCron"
-)
+import "github.com/tmaio/go-gin-example/cron/goroutine"
 
+// 定时任务入口
 func main()  {
-
-	userCron.DoUserJob()
-
+	//userCron.DoUserJob()
+	//goroutine.Start()
+	//goroutine.RunGosched()
+	goroutine.RunGomaxProcs()
 }

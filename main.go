@@ -11,12 +11,13 @@ import (
 	"syscall"
 )
 
-
 func main() {
 
 	setting.Setup()
 	models.Setup()
-	logging.Setup()
+
+	//logging.Setup(logging.FileLog{})
+	logging.Setup(logging.DbLog{})
 
 	endless.DefaultReadTimeOut = setting.ServerSetting.ReadTimeout
 	endless.DefaultWriteTimeOut = setting.ServerSetting.WriteTimeout
