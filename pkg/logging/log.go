@@ -10,6 +10,14 @@ import (
 
 type Level int
 
+type FileLog struct {
+
+}
+
+func (FileLog) Create() Loger {
+	return &FileLog{}
+}
+
 var (
 	F *os.File
 	DefaultPrefix = ""
@@ -28,34 +36,34 @@ const (
 	FATAL
 )
 
-func Setup()  {
+func (FileLog) Setup()  {
 	filePath := getLogFileFullPath()
 	F = openLogFile(filePath)
 
 	logger = log.New(F, DefaultPrefix, log.LstdFlags)
 }
 
-func Debug(v ...interface{})  {
+func (FileLog) Debug(v ...interface{})  {
 	SetPrefix(DEBUG)
 	logger.Println(v)
 }
 
-func Info(v ...interface{})  {
+func (FileLog) Info(v ...interface{})  {
 	SetPrefix(INFO)
 	logger.Println(v)
 }
 
-func Warn(v ...interface{})  {
+func (FileLog) Warn(v ...interface{})  {
 	SetPrefix(WARNING)
 	logger.Println(v)
 }
 
-func Error(v ...interface{})  {
+func (FileLog) Error(v ...interface{})  {
 	SetPrefix(ERROR)
 	logger.Println(v)
 }
 
-func Fatal(v ...interface{})  {
+func (FileLog) Fatal(v ...interface{})  {
 	SetPrefix(FATAL)
 	logger.Println(v)
 }
