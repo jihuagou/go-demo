@@ -17,5 +17,5 @@
 
 .idea/
 ./runtime/logs/*.log
-/logs/*.log
+*.log
 !.gitkeep
