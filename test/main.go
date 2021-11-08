@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/tmaio/go-gin-example/test/sync"
 	"time"
 )
 
 func main()  {
-	testCacheTime()
+	//testCacheTime()
+	sync.SyncOnceDemo()
 }
 
 const NUM = 9999

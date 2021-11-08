@@ -1,6 +1,11 @@
 package logging
 
-var Logor Loger
+import "sync"
+
+var (
+	Logor Loger
+	once sync.Once
+)
 
 type Loger interface {
 	Setup()
@@ -13,8 +18,11 @@ type LogerFactory interface {
 }
 
 func Setup(factory LogerFactory) {
-	Logor = factory.Create()
-	Logor.Setup()
+	once.Do(func() {
+		Logor = factory.Create()
+		Logor.Setup()
+	})
+
 }
 
 func NewLog() Loger {
